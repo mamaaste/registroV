@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <div class="contenedor-principal">
+        <div class="contenedor-formulario">
+            <form action="revisar.php" method="post">
+                <fieldset>
+                    <legend class="legend">Login</legend>
+                    <div class="input">
+                        <span><i class="fa fa-user"></i></span>
+                        <input type="email" placeholder="Nombre de usuario" name="nombres" required>
+                    </div>
+                    <div class="input">
+                        <span><i class="fa fa-lock"></i></span>
+                        <input type="password" placeholder="Contraseña" name="contraseña" required>
+                    </div>
+                    <button type="submit" class="submit">Iniciar Sesión</button><br><br>
+                    <div>
+                        <button type="button" class="submit"> <a href="recu.php" style="color: white; text-decoration: none;">Recuperar contraseña</a></button>
+                    </div>
+                </fieldset>
+                <div class="feedback">
+                    Login exitoso<br>
+                    Redirigiendo...
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

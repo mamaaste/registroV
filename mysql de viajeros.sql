@@ -1,0 +1,14 @@
+CREATE DATABASE registrov;
+use registrov;
+
+CREATE TABLE administracion (
+id INT(10) AUTO_INCREMENT PRIMARY KEY,
+nombre VARCHAR(40) NOT NULL, 
+apellido VARCHAR(40) NOT NULL, 
+email VARCHAR(45) NOT NULL, 
+fechaD DATETIME DEFAULT CURRENT_TIMESTAMP, 
+telefono INT(10) NOT NULL, 
+asig varchar (50) NOT NULL,
+contraseña VARCHAR(255) NOT NULL
+
+);
