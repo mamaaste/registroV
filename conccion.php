@@ -1,6 +1,6 @@
 <?php 
 $sn = "localhost";
-$db ="registrov";
+$db ="registro_viajes";
 $user ="root";
 $pass = "";
 

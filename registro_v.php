@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Viajeros</title>
+    <title>Registro de Viajes</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
@@ -35,7 +35,7 @@
             text-align: left;
         }
         
-        .form-container input {
+        .form-container input, .form-container select {
             width: 100%;
             padding: 8px;
             margin-bottom: 15px;
@@ -61,25 +61,39 @@
 </head>
 <body>
     <div class="form-container">
-        <h2>Registro de Viajeros</h2>
-        <form action="revisar.php" method="post">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required><br><br>
+        <h2>Registro de Viajes</h2>
+        <form action="verificarv.php" method="post">
+            <label for="viajero_id">Viajero:</label>
+            <select id="viajero_id" name="viajero_id" required>
+                <?php
+                // Conectar a la base de datos y obtener la lista de viajeros
+                include "conccion.php";
+                
+                $result = $conn->query("SELECT id, CONCAT(nombre, ' ', apellido) AS nombre_completo FROM viajeros");
+                
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['id'] . "'>" . $row['nombre_completo'] . "</option>";
+                    }
+                } else {
+                    echo "<option value=''>No hay viajeros disponibles</option>";
+                }
+                ?>
+            </select>
             
-            <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido" name="apellido" required><br><br>
+            <label for="destino">Destino:</label>
+            <input type="text" id="destino" name="destino" required>
             
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br><br>
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
             
-            <label for="telefono">Teléfono:</label>
-            <input type="text" id="telefono" name="telefono" required><br><br>
+            <label for="costo">Costo:</label>
+            <input type="number" id="costo" name="costo" step="0.01" required>
             
-            <button type="submit">Registrar Viajero</button>
+            <button type="submit">Registrar Viaje</button>
+            <button onclick="location.href='index.html '">Registro de Viajero</button>
+            <button onclick="location.href='ver_viajes.php'">Ver Viajes</button>
         </form>
-        
-        <button onclick="location.href='registro_v.php'">Registro de Viajes</button>
-        <button onclick="location.href='ver_viajes.php'">Ver Viajes</button>
     </div>
 </body>
 </html>
